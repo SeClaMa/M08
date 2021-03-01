@@ -1,0 +1,35 @@
+<html>
+    <head>
+
+    </head>
+    
+    <body>
+        <h1>Chucko norre</h1>
+
+        <table id="product-list">
+
+        </table>
+
+        <script>
+            alert("Chucke llego");
+            $.ajax({
+                type: "Get",
+                url: "https://api.chucknorris.io/jokes/categories",
+                beforeSend: function(request){
+                    request.setRequestHeader("Content-Type", "application/json");
+                },
+                success: function(data){
+                    var categorias = [];
+
+                    $.each(data, function(key, val){
+                        categorias.push('<tr><td>' + val + '</td></tr>');
+                    });
+                    $('#product-list').append(categorias);
+                }
+
+            });
+
+        </script>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>
